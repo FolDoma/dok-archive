@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['dok.fdma.dev'],
   },
+  output: 'standalone',
 };
 
 export default nextConfig;
