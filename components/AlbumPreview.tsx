@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useEffect, useState } from 'react';
 import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2";
 
@@ -46,7 +45,7 @@ export default function AlbumPreview({ url }: AlbumPreviewProps) {
             <a href={url} className="rounded-lg m-2 overflow-hidden aspect-video w-36 relative shrink-0 ">
                 <div className="absolute w-full h-full bg-background/40"></div>
                 <HiMiniArrowTopRightOnSquare className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-6 w-6 text-text pl-1" />
-                {album.previewImage && <Image width={150} height={100} src={album.previewImage} alt={album.title} loading="lazy" />}
+                {album.previewImage && <img width={150} height={100} src={album.previewImage} alt={album.title} loading="lazy" />}
             </a>
         </div>
     );
