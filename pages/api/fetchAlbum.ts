@@ -1,0 +1,24 @@
+// pages/api/fetchAlbum.ts
+import type { NextApiRequest, NextApiResponse } from 'next';
+import fetch from 'node-fetch';
+import * as cheerio from 'cheerio';
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    const { url } = req.query;
+    if (!url || typeof url !== 'string') return res.status(400).json({ error: 'Missing url' });
+
+    try {
+        const response = await fetch(url);
+        const html = await response.text();
+        const $ = cheerio.load(html);
+
+        const title = $('meta[property="og:title"]').attr('content') || null;
+        const description = $('meta[property="og:description"]').attr('content') || null;
+        const previewImage = $('meta[property="og:image"]').attr('content') || null;
+
+        res.status(200).json({ title, description, previewImage });
+    } catch (err) {
+        const message = err instanceof Error ? err.message : 'Unknown error';
+        res.status(500).json({ error: message });
+    }
+}

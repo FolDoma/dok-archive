@@ -1,26 +1,56 @@
 @import "tailwindcss";
+@import "@heroui/styles";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *)); 
+
+@theme {
+--color-primary: #e1e342;
+--color-primary-content: #212105;
+--color-primary-dark: #d1d31f;
+--color-primary-light: #e8ea6e;
+
+--color-secondary: #4442e3;
+--color-secondary-content: #ffffff;
+--color-secondary-dark: #211fd3;
+--color-secondary-light: #706eea;
+
+--color-background: #1d1d16;
+--color-foreground: #2c2c21;
+--color-border: #494936;
+
+--color-text: #fcfcfb;
+--color-text-light: #deded3;
+--color-text-lighter: #b3b398;
+
+--color-success: #42e342;
+--color-warning: #e3e342;
+--color-error: #e34242;
+--color-success-content: #052105;
+--color-warning-content: #212105;
+--color-error-content: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  }
+  body {
+    @apply text-text bg-black;
+    font-family: var(--font-jetbrains-mono), monospace;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.grainy-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.1;
+    background-attachment: fixed;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 800'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat; /* Optional: repeat grain pattern */
 }
