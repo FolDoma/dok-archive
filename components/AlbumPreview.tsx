@@ -40,7 +40,7 @@ export default function AlbumPreview({ url }: AlbumPreviewProps) {
         <div className="rounded-2xl border border-primary overflow-hidden flex justify-between h-full w-full">
             <div className="flex flex-col space-y-1 p-2 min-w-0">
                 <div className="text-base wrap-break-word">{album.title}</div>
-                <div className="text-text-lighter text-sm">{album.description.split(" ").filter(Number)} foto</div>
+                <div className="text-text-lighter text-sm">{album.description.split(" ").filter(Number)} fotó</div>
             </div>
             <a href={url} className="rounded-lg m-2 overflow-hidden aspect-video w-36 relative shrink-0 ">
                 <div className="absolute w-full h-full bg-background/40"></div>
