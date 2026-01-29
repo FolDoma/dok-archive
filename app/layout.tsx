@@ -22,6 +22,7 @@ export default function RootLayout({
 			<body
 				className={`${jetBrains.variable} antialiased grainy-container`}
 			>
+				<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19c4781820b74f7a8c360b248524b6d6"}'></script>
 				{children}
 			</body>
 		</html>
